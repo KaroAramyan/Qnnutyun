@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.title }}</title>
+</head>
+
+<body>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    <p>Цена: {{ course.rate }}</p>
+
+    <form method="post" action="{% url 'rate_course' course_id=course.id %}">
+        {% csrf_token %}
+        <label for="rating">Оценка:</label>
+        <input type="number" id="rating" name="rating" step="0.1" min="0" max="10" required>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+
+</html>
